@@ -4,7 +4,7 @@ import Item from "./Item";
 import Style from "./Shop.module.css"
 import { Link } from "react-router-dom";
 
-function Shop() {
+function Shop({click}) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -29,7 +29,7 @@ function Shop() {
             return (
               <div key={e.id} className={Style.item}>
                 <Item title={e.title} price={e.price} image={e.image} />
-                <button>Add To Cart</button>
+                <button onClick={() => click(e.id)}>Add To Cart</button>
                 <Link to={`/product/${e.id}`}>Browser</Link>
               </div>
             )

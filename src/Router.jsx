@@ -1,11 +1,22 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import ErrorPage from "./ErrorPage";
-import Shop from "./components/Shop/Shop";
 import Cart from "./components/Cart/Cart";
+import ErrorPage from "./ErrorPage";
 import Product from "./components/Product/Product";
+import Shop from "./components/Shop/Shop";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useState } from "react";
 
 function Router() {
+  const [cart, setCart] = useState([]);
+
+  function handleClick(item) {
+    if (cart.includes(item)) {
+      return;
+    }
+
+    setCart(prev => [...prev, item]);
+  }
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -15,12 +26,12 @@ function Router() {
 
     {
       path: "shop",
-      element: <Shop />
+      element: <Shop click={handleClick} />
     },
 
     {
       path: "cart",
-      element: <Cart />
+      element: <Cart ids={cart} />
     },
 
     {

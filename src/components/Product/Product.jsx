@@ -17,6 +17,7 @@ function Product() {
     })()
   }, [id])
 
+
   return (
     <>
       <Header />
