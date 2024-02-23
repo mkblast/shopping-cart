@@ -3,8 +3,9 @@ import Header from "../Header/Header";
 import Item from "./Item";
 import Style from "./Shop.module.css"
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-function Shop({click}) {
+function Shop({ click }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -39,5 +40,9 @@ function Shop({click}) {
     </>
   )
 }
+
+Shop.propTypes = {
+  click: PropTypes.func,
+};
 
 export default Shop;
